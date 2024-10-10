@@ -10,7 +10,7 @@ const routes = [
 
     // Tool pages
     { path: '/gpa-calculator', component: gpaCalculator},
-    { path: '/qr-code-generator', component: gpaCalculator}
+    { path: '/qr-code-generator', component: qrCodeGenerator}
 ];
 
 export default routes;
