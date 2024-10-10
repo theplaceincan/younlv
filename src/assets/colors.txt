@@ -1,0 +1,3 @@
+Lighter scarlet red - rgb(233, 22, 57);
+Darker "scarlet" red -  rgb(182, 2, 32);
+Gray -  rgb(102, 102, 102)

@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input {
+  outline: none;
+}
+
+textarea {
+  outline: none;
+}
+
+.menuNavButton {
+    padding: 8px;
+    font-weight: 500;
+    border-radius: 3px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.menuNavButton:hover {
+    color: white;
+    background-color: rgb(233, 22, 57);
+}
+
+.menuNavButton:active {
+    color: white;
+    background-color: rgb(182, 2, 32);
+}
+
+
+.navBarMobileButton {
+    color: rgb(102, 102, 102);
+    padding: 8px;
+    font-weight: 500;
+    border-radius: 3px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.navBarMobileButton:hover {
+    color: white;
+    background-color: rgb(233, 22, 57);
+}
+
+.navBarMobileButton:active {
+    color: white;
+    background-color: rgb(182, 2, 32);
+}
+
+
+.registerNavBarButton {
+    padding: 8px;
+    font-weight: 500;
+    border-radius: 2px;
+    color: rgb(18, 156, 5);
+    transition: background-color 0.1s ease, color 0.1s ease;
+}
+
+.registerNavBarButton:hover {
+    color: white;
+    background-color: rgb(18, 156, 5);
+}
+
+.registerNavBarButton:active {
+    color: white;
+    background-color: rgb(18, 156, 5);
+}
+
+
+.signOutNavBarButton {
+    color: rgb(233, 22, 57);
+    padding: 8px;
+    font-weight: 500;
+    border-radius: 3px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.signOutNavBarButton:hover {
+    color: white;
+    background-color: rgb(233, 22, 57);
+}
+
+.signOutNavBarButton:active {
+    color: white;
+    background-color: rgb(182, 2, 32);
+}
