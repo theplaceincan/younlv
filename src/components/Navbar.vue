@@ -3,14 +3,18 @@ import { ref, onMounted, onUnmounted, computed, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import pb from '../composables/usePocketbase';
 
+// User model
 const model = computed(() => pb.authStore.model);
+// Routes constants
 const route = useRoute();
 const router = useRouter();
 
+// Authentication status
 const isAuthenticated = computed(() => {
   return pb.authStore.model !== null;
 });
 
+// Used to see if user is on mobile or not
 let mobileMenu = ref(false);
 function mobileMenuToggle() {
   mobileMenu.value = !mobileMenu.value;
@@ -21,13 +25,24 @@ const isSticky = ref(false);
 const hideNav = ref(false);
 const isHovered = ref(false);
 
+// Handles the scroll event to toggle sticky  
 const handleScroll = () => {
+  // isSticky is true if the page is scrolled down (scrollY > 0), 
+  // otherwise isSticky is false.
   isSticky.value = window.scrollY > 0;
 };
 
+// Used for home-specific elements
 const isNotHomePage = computed(() => {
   return route.path !== '/';
 });
+
+// Log out of account, go to /register
+function logOut() {
+  pb.authStore.clear();
+  router.push('/register');
+  mobileMenu.value = false;
+}
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll);
@@ -37,12 +52,6 @@ onMounted(() => {
     hideNav.value = to.path === '/register';
   });
 });
-
-function logOut() {
-  pb.authStore.clear();
-  router.push('/register');
-  mobileMenu.value = false;
-}
 
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll);

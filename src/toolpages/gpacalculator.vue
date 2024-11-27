@@ -3,6 +3,7 @@ import { ref } from 'vue'
 </script>
 
 <template>
+    <!-- Needed to handle navbar offset -->
     <div class="p-[30px]"></div>
     <div class="p-5">
         <p class="text-lg font-semibold">GPA Calculator</p>
