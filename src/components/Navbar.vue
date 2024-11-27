@@ -89,7 +89,7 @@ onUnmounted(() => {
     </div>
     <div v-if="mobileMenu" class="isMobile flex flex-col text-center bg-white mt-2">
       <!-- // Mobile navbar buttons --> 
-      <a class="navBarMobileButton" href="/about"><button>About</button></a>
+      <!-- <a class="navBarMobileButton" href="/about"><button>About</button></a> -->
       <div class="p-[1px] my-2 bg-zinc-200"></div>
       <!-- // Username button -->
       <!-- <a v-if="isAuthenticated" href="/menu" class="navBarMobileButton"><button>{{model?.username}}</button></a> -->
