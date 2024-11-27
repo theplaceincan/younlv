@@ -23,7 +23,7 @@ const homeButtons = ref([
             <!-- <p class="text-center font-semibold text-xl text-zinc-700">Tools</p>
             <div class="p-[1px] my-2 bg-zinc-200"></div> -->
             <div v-for="button in homeButtons" :key="button.id">
-                <a :href="button.href"><button class="my-2 homeToolButtonsCSS w-full">
+                <a :href="button.href"><button class="my-2 homeToolButtonsCSS w-full font-semibold">
                         <p>{{ button.title }}</p>
                     </button></a>
             </div>
@@ -39,7 +39,6 @@ const homeButtons = ref([
     padding-left: 23px;
     padding-right: 23px;
     text-align: center;
-    font-weight: 500;
     border-radius: 10px;
     border: 3px solid rgb(233, 22, 57);
     transition: background-color 0.2s ease, color 0.2s ease, border 0.2s ease;
