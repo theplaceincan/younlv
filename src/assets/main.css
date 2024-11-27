@@ -17,7 +17,7 @@ textarea {
 /* Navigation bar buttons on non-mobile */
 .menuNavButton {
     padding: 8px;
-    font-weight: 500;
+    font-weight: 600;
     border-radius: 3px;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
@@ -34,7 +34,7 @@ textarea {
 .navBarMobileButton {
     color: rgb(102, 102, 102);
     padding: 8px;
-    font-weight: 500;
+    font-weight: 600;
     border-radius: 3px;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
@@ -50,10 +50,10 @@ textarea {
 /* Register/sign in button */
 .registerNavBarButton {
     padding: 8px;
-    font-weight: 500;
+    font-weight: 600;
     border-radius: 2px;
     color: rgb(18, 156, 5);
-    transition: background-color 0.1s ease, color 0.1s ease;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 .registerNavBarButton:hover {
     color: white;
@@ -69,7 +69,7 @@ textarea {
 .signOutNavBarButton {
     color: rgb(233, 22, 57);
     padding: 8px;
-    font-weight: 500;
+    font-weight: 600;
     border-radius: 3px;
     transition: background-color 0.2s ease, color 0.2s ease;
 }

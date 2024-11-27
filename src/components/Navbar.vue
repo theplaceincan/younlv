@@ -66,13 +66,15 @@ onUnmounted(() => {
         <a href="/"><img class="w-24" src="../assets/websitelogos/light.png"></a>
       </div>
       <div :class="{'ml-1':!isAuthenticated, 'ml-[77px]':isAuthenticated}" class="isPC flex items-center space-x-4">
+        <!-- // non-Mobile navbar buttons -->
         <!-- <a href="/about"><button class="navBarButton" :class="{ 'text-black': isSticky || mobileMenu || isHovered || isNotHomePage, 'text-white': !isSticky && !mobileMenu && !isHovered && !isNotHomePage }">About</button></a> -->
       </div>
       <div class="isPC flex items-center space-x-4">
+        <!-- // Username button -->
         <!-- <a href="/menu">
           <p class="truncate max-w-[78px]" :class="{ 'text-black': isSticky || mobileMenu || isHovered || isNotHomePage, 'text-white': !isSticky && !mobileMenu && !isHovered && !isNotHomePage }">{{ model?.username }}</p>
         </a> -->
-        <!-- Sign In / Sign Out Buttons -->
+        <!-- // Sign In / Sign Out Buttons -->
         <!-- <a v-if="!isAuthenticated" href="/register"><button class="registerNavBarButton" :class="{ 'text-green-600': isSticky || isHovered, 'text-green-500': !isSticky && !isHovered }">Sign In</button></a>
         <a v-if="isAuthenticated" @click.prevent="logOut()"><button class="signOutrNavBarButton" :class="{ 'text-red-600': isSticky || isHovered, 'text-red-500': !isSticky && !isHovered }">Sign Out</button></a> -->
       </div>
@@ -86,10 +88,12 @@ onUnmounted(() => {
       </div>
     </div>
     <div v-if="mobileMenu" class="isMobile flex flex-col text-center bg-white mt-2">
-      <!-- <a class="navBarMobileButton" href="/about"><button>About</button></a> -->
+      <!-- // Mobile navbar buttons --> 
+      <a class="navBarMobileButton" href="/about"><button>About</button></a>
       <div class="p-[1px] my-2 bg-zinc-200"></div>
+      <!-- // Username button -->
       <!-- <a v-if="isAuthenticated" href="/menu" class="navBarMobileButton"><button>{{model?.username}}</button></a> -->
-      <!-- Sign In / Sign Out Buttons -->
+      <!-- // Sign In / Sign Out Buttons -->
       <!-- <a v-if="!isAuthenticated" href="/register" class="registerNavBarButton"><button>Sign In</button></a>
       <a v-if="isAuthenticated" @click.prevent="logOut()" class="signOutrNavBarButton"><button>Sign Out</button></a> -->
     </div>
