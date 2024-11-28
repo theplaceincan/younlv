@@ -6,7 +6,20 @@ export default {
   ],
   theme: {
     extend: {
-      
+      colors: {
+        // global colors
+        unlvRed: "var(--color-unlvRed)",
+        unlvLightRed: "var(--color-unlvLightRed)",
+        unlvDarkRed: "var(--color-unlvDarkRed)",
+        unlvDarkerRed: "var(--color-unlvDarkerRed)",
+        unlvGray: "var(--color-unlvGray)",
+        // theme-specific
+        primary: "var(--color-primary)",
+        bgPrimary: "var(--color-bgPrimary)",
+        secondary: "var(--color-secondary)",
+        primaryText: "var(--color-primaryText)",
+        secondaryText: "var(--color-secondaryText)",
+      }
     },
   },
   plugins: [],

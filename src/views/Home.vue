@@ -20,12 +20,13 @@ const homeButtons = ref([
 <template>
     <div class="h-[100vh] flex items-center justify-center">
         <div>
-            <!-- <p class="text-center font-semibold text-xl text-zinc-700">Tools</p>
-            <div class="p-[1px] my-2 bg-zinc-200"></div> -->
+            <!-- :class="`theme-${websiteTheme} bg-bgPrimary`" -->
             <div v-for="button in homeButtons" :key="button.id">
-                <a :href="button.href"><button class="my-2 homeToolButtonsCSS w-full font-semibold">
+                <a :href="button.href">
+                    <button class="my-2 homeToolButtonsCSS w-full font-semibold">
                         <p>{{ button.title }}</p>
-                    </button></a>
+                    </button>
+                </a>
             </div>
         </div>
     </div>

@@ -5,14 +5,39 @@
 
 /* Clearing default input CSS */
 input {
-  outline: none;
+    outline: none;
 }
 textarea {
-  outline: none;
+    outline: none;
 }
 
+/* // Themes // */
+@layer base {
+    :root {
+    --color-unlvRed: rgb(233, 22, 57);
+    --color-unlvLightRed: rgba(252, 43, 78, 0.863);
+    --color-unlvDarkRed: rgb(182, 2, 32);
+    --color-unlvDarkerRed: rgb(148, 0, 25);
+    --color-unlvGray: rgb(102, 102, 102);
+    }
+}
 
-/* // Button tyles // */
+.theme-dark {
+    --color-bgPrimary: rgb(31, 31, 31);
+    --color-primary: rgb(31, 31, 31);
+    --color-secondary: rgb(68, 68, 68);
+    --color-primaryText: rgb(255, 255, 255);
+    --color-secondaryText: rgb(196, 196, 196);
+}
+.theme-light {
+    --color-bgPrimary: rgb(255, 255, 255);
+    --color-primary: rgb(255, 255, 255);
+    --color-secondary: rgb(211, 211, 211);
+    --color-primaryText: rgb(37, 37, 37);
+    --color-secondaryText: rgb(78, 78, 78);
+}
+
+/* // Button styles // */
 
 /* Navigation bar buttons on non-mobile */
 .menuNavButton {
