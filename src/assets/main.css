@@ -3,18 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Clearing default input CSS */
-input {
-    outline: none;
-}
-textarea {
-    outline: none;
-}
-
 /* // Themes // */
 @layer base {
     :root {
-    --color-unlvRed: rgb(233, 22, 57);
+    --color-unlvRed: rgb(221, 16, 50);
     --color-unlvLightRed: rgba(252, 43, 78, 0.863);
     --color-unlvDarkRed: rgb(182, 2, 32);
     --color-unlvDarkerRed: rgb(148, 0, 25);
@@ -23,11 +15,12 @@ textarea {
 }
 
 .theme-dark {
-    --color-bgPrimary: rgb(31, 31, 31);
+    --color-bgPrimary: rgb(36, 36, 36);
     --color-primary: rgb(31, 31, 31);
     --color-secondary: rgb(68, 68, 68);
     --color-primaryText: rgb(255, 255, 255);
     --color-secondaryText: rgb(196, 196, 196);
+    --color-tertiaryText: rgb(139, 139, 139);
 }
 .theme-light {
     --color-bgPrimary: rgb(255, 255, 255);
@@ -35,74 +28,7 @@ textarea {
     --color-secondary: rgb(211, 211, 211);
     --color-primaryText: rgb(37, 37, 37);
     --color-secondaryText: rgb(78, 78, 78);
+    --color-tertiaryText: rgb(145, 145, 145);
 }
 
 /* // Button styles // */
-
-/* Navigation bar buttons on non-mobile */
-.menuNavButton {
-    padding: 8px;
-    font-weight: 600;
-    border-radius: 3px;
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-.menuNavButton:hover {
-    color: white;
-    background-color: rgb(233, 22, 57);
-}
-.menuNavButton:active {
-    color: white;
-    background-color: rgb(182, 2, 32);
-}
-
-/* Navigation bar buttons on mobile */
-.navBarMobileButton {
-    color: rgb(102, 102, 102);
-    padding: 8px;
-    font-weight: 600;
-    border-radius: 3px;
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-.navBarMobileButton:hover {
-    color: white;
-    background-color: rgb(233, 22, 57);
-}
-.navBarMobileButton:active {
-    color: white;
-    background-color: rgb(182, 2, 32);
-}
-
-/* Register/sign in button */
-.registerNavBarButton {
-    padding: 8px;
-    font-weight: 600;
-    border-radius: 2px;
-    color: rgb(18, 156, 5);
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-.registerNavBarButton:hover {
-    color: white;
-    background-color: rgb(18, 156, 5);
-}
-.registerNavBarButton:active {
-    color: white;
-    background-color: rgb(18, 156, 5);
-}
-
-
-/* Sign out button */
-.signOutNavBarButton {
-    color: rgb(233, 22, 57);
-    padding: 8px;
-    font-weight: 600;
-    border-radius: 3px;
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-.signOutNavBarButton:hover {
-    color: white;
-    background-color: rgb(233, 22, 57);
-}
-.signOutNavBarButton:active {
-    color: white;
-    background-color: rgb(182, 2, 32);
-}
