@@ -18,9 +18,11 @@ export default {
         primary: "var(--color-primary)",
         bgPrimary: "var(--color-bgPrimary)",
         secondary: "var(--color-secondary)",
+        tertiary: "var(--color-tertiary)",
         primaryText: "var(--color-primaryText)",
         secondaryText: "var(--color-secondaryText)",
         tertiaryText: "var(--color-tertiaryText)",
+        quaternaryText: "var(--color-quaternaryText)",
       }
     },
   },

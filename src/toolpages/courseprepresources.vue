@@ -4,7 +4,9 @@
 <!-- :class="`theme-${websiteTheme} `" -->
 
 <template>
-    <p :class="`theme-${websiteTheme} text-primaryText`">Course prep resources</p>
+    <div class="h-14">
+
+    </div>
 </template>
 
 <style scoped></style>

@@ -19,17 +19,21 @@
     --color-bgPrimary: rgb(36, 36, 36);
     --color-primary: rgb(31, 31, 31);
     --color-secondary: rgb(68, 68, 68);
+    --color-tertiary: rgb(83, 83, 83);
     --color-primaryText: rgb(255, 255, 255);
     --color-secondaryText: rgb(196, 196, 196);
     --color-tertiaryText: rgb(139, 139, 139);
+    --color-quaternaryText: rgb(112, 112, 112);
 }
 .theme-light {
     --color-bgPrimary: rgb(255, 255, 255);
     --color-primary: rgb(255, 255, 255);
-    --color-secondary: rgb(211, 211, 211);
+    --color-secondary: rgb(233, 233, 233);
+    --color-tertiary: rgb(197, 197, 197);
     --color-primaryText: rgb(37, 37, 37);
     --color-secondaryText: rgb(78, 78, 78);
     --color-tertiaryText: rgb(145, 145, 145);
+    --color-quaternaryText: rgb(170, 170, 170);
 }
 
 /* // Button styles // */
