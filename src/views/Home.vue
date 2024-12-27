@@ -49,14 +49,14 @@ const filteredButtons = computed(() => {
     <div class="w-full flex flex-col items-center justify-center" v-for="button in filteredButtons" :key="button.id">
       <a class="w-72" :href="button.href">
         <button class="my-2 w-full font-semibold" :class="`theme-${websiteTheme} 
-                  text-white 
-                    bg-unlvRed
-                    hover:bg-unlvDarkRed
-                    active:bg-unlvDarkerRed
-                    transition ease-in-out
-                    p-4
-                    rounded-md
-                     `">
+        text-white 
+          bg-unlvRed
+          hover:bg-unlvDarkRed
+          active:bg-unlvDarkerRed
+          transition ease-in-out
+          p-4
+          rounded-md
+          `">
           <p>{{ button.title }}</p>
         </button>
       </a>

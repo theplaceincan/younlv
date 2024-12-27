@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <p>Hi</p>
+    <p :class="`theme-${websiteTheme} text-primaryText`">Hi</p>
 </template>
 
 <style scoped></style>

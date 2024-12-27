@@ -12,6 +12,7 @@ export default {
         unlvLightRed: "var(--color-unlvLightRed)",
         unlvDarkRed: "var(--color-unlvDarkRed)",
         unlvDarkerRed: "var(--color-unlvDarkerRed)",
+        unlvDarkerRed1: "var(--color-unlvDarkerRed1)",
         unlvGray: "var(--color-unlvGray)",
         // theme-specific
         primary: "var(--color-primary)",

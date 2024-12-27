@@ -10,6 +10,7 @@
     --color-unlvLightRed: rgba(252, 43, 78, 0.863);
     --color-unlvDarkRed: rgb(182, 2, 32);
     --color-unlvDarkerRed: rgb(148, 0, 25);
+    --color-unlvDarkerRed1: rgb(126, 0, 21);
     --color-unlvGray: rgb(102, 102, 102);
     }
 }
@@ -32,3 +33,16 @@
 }
 
 /* // Button styles // */
+
+.textLink {
+    transition: color 0.2s ease;
+}
+
+.textLink:hover {
+    text-decoration: underline;
+    color: var(--color-unlvRed);
+}
+
+.textLink:active {
+    color: var(--color-unlvDarkRed);
+}
