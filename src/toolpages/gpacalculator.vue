@@ -129,14 +129,14 @@ onMounted(() => {
         <div :class="`theme-${websiteTheme} text-secondaryText font-semibold`" class="flex flex-col">
           <input
             :class="`hover:bg-secondary transition ease-in-out theme-${websiteTheme} text-primaryText placeholder-tertiaryText`"
-            v-model="newSemesterSeason" placeholder="Semester name">
+            v-model="newSemesterSeason" placeholder="Enter semester name">
           <input
             :class="`hover:bg-secondary transition ease-in-out theme-${websiteTheme} text-primaryText placeholder-tertiaryText`"
-            v-model="newSemesterYear" placeholder="Semester year">
+            v-model="newSemesterYear" placeholder="Enter semester year">
         </div>
         <div class="border-t-[1px] rounded-sm my-2 border-tertiary"></div>
         <div class="flex flex-wrap">
-          <div v-for="a in aa" :class="`theme-${websiteTheme} border-2 border-tertiary`"
+          <div v-for="a in aa" :class="`shadow-md theme-${websiteTheme} border-2 border-tertiary`"
             class="flex m-1 flex-col w-fit p-1 rounded-sm">
             <div class="flex flex-col space-y-1">
               <input

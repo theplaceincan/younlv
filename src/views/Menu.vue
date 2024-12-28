@@ -22,8 +22,16 @@ function logOut() {
 <!-- :class="`theme-${websiteTheme} text-primaryText`" -->
 <template>
     <div class="min-h-[100vh]">
-        <p :class="`theme-${websiteTheme} text-primaryText text-2xl text-center font-semibold`"> Menu</p>
-        <button @click="logOut()" :class="`theme-${websiteTheme} text-primaryText`">Log out</button>
+        <p :class="`theme-${websiteTheme} text-primaryText text-2xl text-center font-semibold`">User Menu</p>
+        <button @click="logOut()" class="my-2 font-semibold" :class="`theme-${ websiteTheme}
+        text-white 
+          bg-red-600
+          hover:bg-red-700
+          active:bg-red-800
+          transition ease-in-out
+          p-4
+          rounded-md
+          `">Log out</button>
     </div>
 </template>
 
