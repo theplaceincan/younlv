@@ -36,6 +36,14 @@
     --color-quaternaryText: rgb(170, 170, 170);
 }
 
+
+/* // Input Styles // */
+
+.inputError {
+  background-color: rgba(255, 0, 0, 0.329);
+}
+
+
 /* // Button styles // */
 
 .textLink {
