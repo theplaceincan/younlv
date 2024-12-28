@@ -10,6 +10,8 @@ const router = useRouter();
 
 const isAuthenticated = ref(pb.authStore.model !== null);
 
+let howToReadMore = ref(false)
+
 let gpaGradePoints = ref(170.200);
 let gpaUnitsTaken = ref(51.000);
 let gpa = ref(3.937);
@@ -47,10 +49,11 @@ function clearSchedule() { console.log("Entire schedule has been cleared") }
 function calculateGPAInfo() { console.log("GPA Info Calculated") }
 function downloadCoursesJSON() { console.log("JSON file of courses downloaded.") }
 
+let JSONFileOpenStatus = ref(null) // 1: good, 0: bad
 function loadCoursesJSONfile(event) {
   coursesJSONFile.value = Array.from(event.target.files)[0];
   coursesJSONURL.value = URL.createObjectURL(coursesJSONFile.value);
-
+  JSONFileOpenStatus.value = null;
   const reader = new FileReader(); // Create a new FileReader instance
   reader.onload = function (e) {
     try {
@@ -60,9 +63,11 @@ function loadCoursesJSONfile(event) {
       // console.log(courses.value.semesters[1].year);
       // console.log(courses.value.semesters[1].season);
       // console.log(courses.value.semesters[1].courses[1]);
-
+      JSONFileOpenStatus.value = 1;
+      console.log(JSONFileOpenStatus)
     } catch (parseError) {
       console.error("Error parsing JSON:", parseError.message);
+      JSONFileOpenStatus.value = 0;
     }
   };
   reader.readAsText(coursesJSONFile.value);
@@ -101,13 +106,19 @@ onMounted(() => {
           <p :class="`theme-${websiteTheme} text-primaryText font-semibold`">Load Courses JSON file</p>
           <input @change="loadCoursesJSONfile" placeholder="Load JSON file"
             :class="`theme-${websiteTheme} text-primaryText placeholder-tertiaryText`" type="file">
+          <p v-if="JSONFileOpenStatus === 1" class="bg-green-500 w-fit my-1 px-2 p-2 font-bold text-white">File Successfully Loaded!</p>
+          <p v-if="JSONFileOpenStatus === 0" class="bg-red-600 w-fit my-1 px-2 p-2 font-bold text-white">File failed to load. Try again.</p>
         </div>
         <div class="">
           <p :class="`theme-${websiteTheme} text-primaryText font-semibold`">How this works</p>
-          <p :class="`theme-${websiteTheme} text-secondaryText`">
-            List your courses and semesters below, then click "Calculate" to compute your GPA. Save your schedule as a
-            JSON file (a type of text file) to continue later by uploading the file ("Choose File" button), editing, and
-            recalculating.
+          <button @click="howToReadMore = !howToReadMore" :class="`theme-${websiteTheme} text-secondaryText font-semibold text-sm bg-secondary px-1`">
+            <span v-if="howToReadMore === false">Open</span><span v-if="howToReadMore">Close</span>
+            Instructions</button>
+          <p v-if="howToReadMore" :class="`theme-${websiteTheme} text-secondaryText`">
+            a) List your courses and semesters below, then click "Calculate" to compute your GPA info. <br> 
+            b) Save your schedule as a
+            JSON file (a type of text file) to save your schedule by uploading the file ("Choose File" button), which brings back your progress. <br>
+            c) Send a message at <a href="https://forms.gle/TVk6J6SoD43d29229" target="_blank" class="underline">this Google form</a> if you have any other questions!
           </p>
         </div>
       </div>
