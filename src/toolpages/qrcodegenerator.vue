@@ -12,8 +12,14 @@ const isAuthenticated = computed(() => {
   return pb.authStore.model !== null;
 });
 
-
 let howToReadMore = ref(false);
+
+function generateQRCode() {
+  // convert link/string to binary
+  // create qr code based on binary data
+
+  console.log("QR Code Generated")
+}
 
 onMounted(() => {
   // Updates isAuthenticated automatically
@@ -46,8 +52,23 @@ onMounted(() => {
       </div>
     </div>
     <div class="border-t-[1px] my-4 border-tertiary"></div>
-    <div>
-      <p>Stuff</p>
+    <div class="space-y-4">
+      <div class="flex flex-col space-y-2">
+        <p :class="`theme-${websiteTheme} text-primaryText font-semibold`">Enter link to generate QR code for:</p>
+        <input class="w-96"
+          :class="`courseInput border-[1px] border-tertiary theme-${websiteTheme} text-primaryText placeholder-tertiaryText`"
+          v-model="x" placeholder="Enter Link">
+        <button @click="generateQRCode()"
+          class="rounded-sm w-[230px] bg-blue-600 hover:bg-blue-700 active:bg-blue-800 transition ease-in-out text-white font-semibold">
+          Generate QR Code
+        </button>
+      </div>
+      <div>
+        <p :class="`theme-${websiteTheme} text-primaryText font-semibold`">Generated QR Code:</p>
+        <div>
+
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -61,5 +82,20 @@ input {
 select {
   outline: none;
   background: none;
+}
+
+.courseInput {
+  padding: 2px;
+  padding-left: 4px;
+  border-radius: 0.175rem;
+  transition: border 0.2s ease;
+}
+
+.courseInput:hover {
+  border: 1px solid var(--color-unlvRed);
+}
+
+.courseInput:focus {
+  border: 1px solid var(--color-unlvDarkRed);
 }
 </style>

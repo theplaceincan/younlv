@@ -46,4 +46,37 @@ select {
   background: none;
 }
 
+select {
+  color: var(--color-primaryText);
+  background-color: var(--color-background);
+}
+
+select option {
+  background-color: var(--color-primary);
+  color: var(--color-primaryText);
+}
+
+select option:hover {
+  background-color: var(--color-tertiary);
+}
+
+select option:checked {
+  background-color: var(--color-secondary);
+}
+
+.courseInput {
+  padding: 2px;
+  padding-left: 4px;
+  border-radius: 0.175rem;
+  transition: border 0.2s ease;
+}
+
+.courseInput:hover {
+  border: 1px solid var(--color-unlvRed);
+}
+
+.courseInput:focus {
+  border: 1px solid var(--color-unlvDarkRed);
+}
+
 </style>

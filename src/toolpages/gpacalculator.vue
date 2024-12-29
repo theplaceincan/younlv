@@ -100,7 +100,7 @@ function createCourse(_semester) {
 function deleteCourse(_semester, _courseIndex) {
   try {
     _semester.courses.splice(_courseIndex, 1);
-    console.log("Course deleted")
+    // console.log(`Course ${_semester.course[_courseIndex].name} deleted`)
   } catch (error) {
     console.log("Course failed to delete: ", error)
   }
@@ -212,17 +212,18 @@ onMounted(() => {
 <template>
   <div class="min-h-[100vh] p-4">
     <p :class="`theme-${websiteTheme} text-primaryText font-bold text-lg`">GPA Calculator</p>
-    <p class="bg-yellow-300 text-black font-bold px-2">New! Report bugs <a target="_blank" href="https://forms.gle/TVk6J6SoD43d29229" class="underline">here</a></p>
+    <p class="bg-yellow-300 text-black font-bold px-2">New! Report bugs <a target="_blank"
+        href="https://forms.gle/TVk6J6SoD43d29229" class="underline">here</a></p>
     <div class="border-t-[1px] my-4 border-tertiary"></div>
     <p :class="`theme-${websiteTheme} text-primaryText`" class="font-semibold underline">Results</p>
     <div>
       <p :class="`theme-${websiteTheme} text-primaryText`">GPA: <span class="font-bold">{{ gpa.toFixed(3) }}</span> </p>
       <p :class="`theme-${websiteTheme} text-primaryText`">Units Taken: <span class="font-bold">{{
         totalUnitsTaken.toFixed(3)
-      }}</span> </p>
+          }}</span> </p>
       <p :class="`theme-${websiteTheme} text-primaryText`">Grade Points: <span class="font-bold">{{
         totalGradePoints.toFixed(3)
-      }}</span> </p>
+          }}</span> </p>
       <div class="flex flex-col mt-2 items-start space-y-1 justify-center">
         <button @click="calculateGPAInfo()"
           class="rounded-sm w-[230px] bg-blue-600 hover:bg-blue-700 active:bg-blue-800 transition ease-in-out text-white font-semibold">Calculate</button>
@@ -253,13 +254,17 @@ onMounted(() => {
             <span v-if="howToReadMore === false">Open</span><span v-if="howToReadMore">Close</span>
             Instructions</button>
           <p v-if="howToReadMore" :class="`theme-${websiteTheme} text-secondaryText`">
-            <span class="font-semibold">a)</span> List your courses and semesters below, then click "Calculate" to compute your GPA info. <br>
+            <span class="font-semibold">a)</span> List your courses and semesters below, then click "Calculate" to
+            compute your GPA info. <br>
             <span class="font-semibold">b)</span> Download your schedule as a
             JSON file (a type of text file) to save your schedule and use later by uploading the file ("Choose File"
             button), which
             brings back your progress. <br>
-            <span class="font-semibold">c)</span> This page uses this grading scale (from UNLV): A: 4.0, A-: 3.7, B+: 3.3, B: 3.0, B-: 2.7, C+: 2.3, C: 2.0, C-: 1.7, D+: 1.3, D: 1.0, D-: 0.7, F: 0.0, S/U: 0.0, S: 0.0, U: 0.0<br>
-            <span class="font-semibold">d)</span> Send a message at <a href="https://forms.gle/TVk6J6SoD43d29229" target="_blank" class="underline">this
+            <span class="font-semibold">c)</span> This page uses this grading scale (from UNLV): A: 4.0, A-: 3.7, B+:
+            3.3, B: 3.0, B-: 2.7, C+: 2.3, C: 2.0, C-: 1.7, D+: 1.3, D: 1.0, D-: 0.7, F: 0.0, S/U: 0.0, S: 0.0, U:
+            0.0<br>
+            <span class="font-semibold">d)</span> Send a message at <a href="https://forms.gle/TVk6J6SoD43d29229"
+              target="_blank" class="underline">this
               Google form</a> if you have any other questions!
           </p>
         </div>
@@ -289,16 +294,16 @@ onMounted(() => {
               <select
                 :class="`courseInput border-[1px] border-tertiary theme-${websiteTheme} text-primaryText placeholder-tertiaryText`"
                 v-model="course.grade" placeholder="Course grade">
-              <option v-for="grade in gradePoints">{{ grade.letterGrade }}</option>
+                <option v-for="grade in gradePoints">{{ grade.letterGrade }}</option>
               </select>
               <input type="number"
                 :class="`courseInput border-[1px] border-tertiary theme-${websiteTheme} text-primaryText placeholder-tertiaryText`"
                 v-model="course.units" placeholder="Course units">
             </div>
             <div class="flex flex-col space-y-1 mt-4 items-center justify-center">
-              <button class="rounded-sm w-full text-red-500 hover:bg-red-600 active:bg-red-700 transition ease-in-out hover:text-white font-semibold">
-                <a @click="deleteCourse(semester, courseIndex)">Delete
-                  course</a>
+              <button @click="deleteCourse(semester, courseIndex)"
+                class="rounded-sm w-full text-red-500 hover:bg-red-600 active:bg-red-700 transition ease-in-out hover:text-white font-semibold">
+                Delete course
               </button>
             </div>
           </div>
@@ -307,21 +312,23 @@ onMounted(() => {
           <button @click="createCourse(semester)"
             class="rounded-sm px-5 py-1 w-[220px] bg-green-600 hover:bg-green-700 active:bg-green-800 transition ease-in-out text-white font-semibold">
             Create course</button>
-          <button class="rounded-sm px-5 w-[220px] bg-red-600 hover:bg-red-700 active:bg-red-800 transition ease-in-out text-white font-semibold">
-            <a @click="deleteSemester(semesterIndex)">Delete semester</a>
+          <button @click="deleteSemester(semesterIndex)"
+            class="rounded-sm px-5 w-[220px] bg-red-600 hover:bg-red-700 active:bg-red-800 transition ease-in-out text-white font-semibold">
+            Delete semester
           </button>
         </div>
       </div>
       <div class="flex flex-col mt-4 space-y-1 items-start justify-center">
-        <button @click=createSemester()
+        <button @click="createSemester()"
           class="rounded-sm px-5 bg-teal-600 hover:bg-teal-700 active:bg-teal-800 transition ease-in-out text-white font-semibold">
           Create semester</button>
       </div>
     </div>
     <div class="border-t-[1px] my-4 border-tertiary"></div>
-    <button class="rounded-sm w-[100px] bg-red-600 hover:bg-red-700 active:bg-red-800 transition ease-in-out text-white font-semibold">
-      <a @click="clearSchedule()">Clear all</a>
-    </button>
+      <button @click="clearSchedule()"
+        class="rounded-sm w-[100px] bg-red-600 hover:bg-red-700 active:bg-red-800 transition ease-in-out text-white font-semibold">
+        Clear all
+      </button>
   </div>
 </template>
 
