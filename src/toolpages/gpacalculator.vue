@@ -205,8 +205,6 @@ onMounted(() => {
   pb.authStore.onChange(() => {
     isAuthenticated.value = pb.authStore.model !== null;
   });
-
-
 });
 </script>
 
@@ -340,6 +338,24 @@ input {
 select {
   outline: none;
   background: none;
+}
+
+select {
+  color: var(--color-primaryText);
+  background-color: var(--color-background);
+}
+
+select option {
+  background-color: var(--color-primary);
+  color: var(--color-primaryText);
+}
+
+select option:hover {
+  background-color: var(--color-tertiary);
+}
+
+select option:checked {
+  background-color: var(--color-secondary);
 }
 
 .courseInput {

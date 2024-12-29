@@ -5,37 +5,36 @@
 
 /* // Themes // */
 @layer base {
-    :root {
+  :root {
     --color-unlvRed: rgb(221, 16, 50);
     --color-unlvLightRed: rgba(252, 43, 78, 0.863);
     --color-unlvDarkRed: rgb(182, 2, 32);
     --color-unlvDarkerRed: rgb(148, 0, 25);
     --color-unlvDarkerRed1: rgb(126, 0, 21);
     --color-unlvGray: rgb(102, 102, 102);
-    }
+  }
 }
 
 .theme-dark {
-    --color-bgPrimary: rgb(36, 36, 36);
-    --color-primary: rgb(31, 31, 31);
-    --color-secondary: rgb(68, 68, 68);
-    --color-tertiary: rgb(83, 83, 83);
-    --color-primaryText: rgb(255, 255, 255);
-    --color-secondaryText: rgb(196, 196, 196);
-    --color-tertiaryText: rgb(139, 139, 139);
-    --color-quaternaryText: rgb(112, 112, 112);
+  --color-bgPrimary: rgb(36, 36, 36);
+  --color-primary: rgb(31, 31, 31);
+  --color-secondary: rgb(68, 68, 68);
+  --color-tertiary: rgb(83, 83, 83);
+  --color-primaryText: rgb(255, 255, 255);
+  --color-secondaryText: rgb(196, 196, 196);
+  --color-tertiaryText: rgb(139, 139, 139);
+  --color-quaternaryText: rgb(112, 112, 112);
 }
 .theme-light {
-    --color-bgPrimary: rgb(255, 255, 255);
-    --color-primary: rgb(255, 255, 255);
-    --color-secondary: rgb(233, 233, 233);
-    --color-tertiary: rgb(197, 197, 197);
-    --color-primaryText: rgb(37, 37, 37);
-    --color-secondaryText: rgb(78, 78, 78);
-    --color-tertiaryText: rgb(145, 145, 145);
-    --color-quaternaryText: rgb(170, 170, 170);
+  --color-bgPrimary: rgb(255, 255, 255);
+  --color-primary: rgb(255, 255, 255);
+  --color-secondary: rgb(233, 233, 233);
+  --color-tertiary: rgb(197, 197, 197);
+  --color-primaryText: rgb(37, 37, 37);
+  --color-secondaryText: rgb(78, 78, 78);
+  --color-tertiaryText: rgb(145, 145, 145);
+  --color-quaternaryText: rgb(170, 170, 170);
 }
-
 
 /* // Input Styles // */
 
@@ -43,18 +42,42 @@
   background-color: rgba(255, 0, 0, 0.329);
 }
 
+input {
+  outline: none;
+  background: none;
+}
+
+select {
+  color: var(--color-primaryText);
+  background-color: var(--color-background);
+  outline: none;
+  background: none;
+}
+
+select option {
+  background-color: var(--color-primary);
+  color: var(--color-primaryText);
+}
+
+select option:hover {
+  background-color: var(--color-tertiary);
+}
+
+select option:checked {
+  background-color: var(--color-secondary);
+}
 
 /* // Button styles // */
 
 .textLink {
-    transition: color 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .textLink:hover {
-    text-decoration: underline;
-    color: var(--color-unlvRed);
+  text-decoration: underline;
+  color: var(--color-unlvRed);
 }
 
 .textLink:active {
-    color: var(--color-unlvDarkRed);
+  color: var(--color-unlvDarkRed);
 }

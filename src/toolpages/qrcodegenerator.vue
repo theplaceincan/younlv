@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import pb from "../composables/usePocketbase";
 import { websiteTheme } from "../globalvariables";
@@ -12,6 +12,12 @@ const isAuthenticated = computed(() => {
   return pb.authStore.model !== null;
 });
 
+onMounted(() => {
+  // Updates isAuthenticated automatically
+  pb.authStore.onChange(() => {
+    isAuthenticated.value = pb.authStore.model !== null;
+  });
+});
 </script>
 
 <!-- :class="`theme-${websiteTheme} text-primaryText`" -->
