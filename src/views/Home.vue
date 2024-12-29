@@ -47,16 +47,17 @@ const filteredButtons = computed(() => {
       <p :class="`theme-${websiteTheme} text-tertiaryText italic`">Searches for exact word (anywhere)</p>
     </div>
     <div class="w-full flex flex-col items-center justify-center" v-for="button in filteredButtons" :key="button.id">
-      <a class="w-72" :href="button.href">
-        <button class="my-2 w-full font-semibold" :class="`theme-${websiteTheme} 
+        <a class="my-2" :href="button.href">
+          <button class="w-72 font-semibold" :class="`theme-${websiteTheme} 
         text-white 
-          bg-unlvRed
-          hover:bg-unlvDarkRed
-          active:bg-unlvDarkerRed
-          transition ease-in-out
-          p-4
-          rounded-md
-          `">
+        bg-unlvRed
+        hover:bg-unlvDarkRed
+        active:bg-unlvDarkerRed
+        transition ease-in-out
+        p-4
+        w-72 
+        rounded-md
+        `">
           <p>{{ button.title }}</p>
         </button>
       </a>

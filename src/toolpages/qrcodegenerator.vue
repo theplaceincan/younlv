@@ -32,9 +32,9 @@ onMounted(() => {
     <div>
       <p :class="`theme-${websiteTheme} text-primaryText font-semibold`">Instructions & Info</p>
       <button @click="howToReadMore = !howToReadMore"
-            :class="`theme-${websiteTheme} text-secondaryText font-semibold text-sm bg-secondary px-1`">
-            <span v-if="howToReadMore === false">Open</span><span v-if="howToReadMore">Close</span>
-            Instructions & Info</button>
+        :class="`theme-${websiteTheme} text-secondaryText font-semibold text-sm bg-secondary px-1`">
+        <span v-if="howToReadMore === false">Open</span><span v-if="howToReadMore">Close</span>
+        Instructions & Info</button>
       <div v-if="howToReadMore">
         <p><span class="semibold">a) </span>Put your link in the input field, then click "Generate QR Code". You will be
           given a QR code of the link you used.<br></p>
