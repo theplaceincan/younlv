@@ -7,19 +7,32 @@ import { websiteTheme } from "../globalvariables";
 const model = computed(() => pb.authStore.model);
 const route = useRoute();
 const router = useRouter();
-
 const isAuthenticated = computed(() => {
   return pb.authStore.model !== null;
 });
-
 let howToReadMore = ref(false);
 
-function generateQRCode() {
-  // convert link/string to binary
-  // create qr code based on binary data
+// *******************************
+// Version 5 QR-Code Implementation
 
+let linkString = ref("");
+let qrSize = 37;
+function generateQRCode(_linkString) {
+  if (!_linkString) { console.log("No link provided"); return; }
+  // Convert string to binary, create qrMatrix
+  const charArray = _linkString.split('')
+  const binaryArray = charArray.map(char => char.charCodeAt(0).toString(2).padStart(8, '0'))
+  const binaryData = binaryArray.join('');
+  const qrMatrix = Array.from({ length: qrSize }, () => Array(qrSize).fill(null));
+ 
+  console.log(binaryData)
   console.log("QR Code Generated")
 }
+
+
+// Version 5 QR-Code Implementation
+// *******************************
+
 
 onMounted(() => {
   // Updates isAuthenticated automatically
@@ -57,15 +70,15 @@ onMounted(() => {
         <p :class="`theme-${websiteTheme} text-primaryText font-semibold`">Enter link to generate QR code for:</p>
         <input class="w-96"
           :class="`courseInput border-[1px] border-tertiary theme-${websiteTheme} text-primaryText placeholder-tertiaryText`"
-          v-model="x" placeholder="Enter Link">
-        <button @click="generateQRCode()"
+          v-model="linkString" placeholder="Enter Link">
+        <button @click="generateQRCode(linkString)"
           class="rounded-sm w-[230px] bg-blue-600 hover:bg-blue-700 active:bg-blue-800 transition ease-in-out text-white font-semibold">
           Generate QR Code
         </button>
       </div>
       <div>
         <p :class="`theme-${websiteTheme} text-primaryText font-semibold`">Generated QR Code:</p>
-        <div>
+        <div class="qr-code-container">
 
         </div>
       </div>
