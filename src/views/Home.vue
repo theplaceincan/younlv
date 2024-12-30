@@ -14,10 +14,12 @@ const isAuthenticated = computed(() => {
   return pb.authStore.model !== null;
 });
 
+let splashTextTypes = ["Yay", "In-Progress", "Planned"]
+
 const homeButtons = ref([
-  { href: "/gpa-calculator", title: "GPA Calculator" },
-  { href: "/qr-code-generator", title: "Free QR-code Generator" },
-  { href: "/course-prep-resources", title: "Course Prep Resources" },
+  { href: "/gpa-calculator", planned: false, title: "GPA Calculator", splashText: "New!", splashType: splashTextTypes[0] },
+  { href: "/qr-code-generator", planned: false, title: "Free QR-code Generator", splashText: "In Progress", splashType: splashTextTypes[1] },
+  { href: "/course-prep-resources", planned: true, title: "Course Prep Resources", splashText: "Planned", splashType: splashTextTypes[2] },
 ]);
 
 const filteredButtons = computed(() => {
@@ -47,25 +49,50 @@ const filteredButtons = computed(() => {
       <p :class="`theme-${websiteTheme} text-tertiaryText italic`">Searches for exact word (anywhere)</p>
     </div>
     <div class="w-full flex flex-col items-center justify-center" v-for="button in filteredButtons" :key="button.id">
-        <a class="my-2" :href="button.href">
-          <button class="w-72 font-semibold" :class="`theme-${websiteTheme} 
-        text-white 
-        bg-unlvRed
-        hover:bg-unlvDarkRed
-        active:bg-unlvDarkerRed
-        transition ease-in-out
-        p-4
-        w-72 
-        rounded-md
-        `">
-          <p>{{ button.title }}</p>
-        </button>
-      </a>
+      <div class="my-2 w-fit relative">
+        <div class="absolute z-10 top-[-13px] right-[-20px] splashTexts" :class="{
+          'bg-yellow-400': button.splashType === splashTextTypes[0],
+          'bg-green-600 text-white': button.splashType === splashTextTypes[1],
+          'bg-gray-600 text-white': button.splashType === splashTextTypes[2],
+        }" v-if="button.splashText != null">
+          <p>{{ button.splashText }}</p>
+        </div>
+        <a :class="{'pointer-events-none' : button.planned}" :href="button.href">
+          <button class="w-72 font-semibold" :class="[
+            { 'planned': button.planned },
+            `theme-${websiteTheme}`,
+            'text-white',
+            'bg-unlvRed',
+            'hover:bg-unlvDarkRed',
+            'active:bg-unlvDarkerRed',
+            'transition',
+            'ease-in-out',
+            'p-4',
+            'w-72',
+            'rounded-md'
+          ]">
+            <p>{{ button.title }}</p>
+          </button>
+        </a>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+.planned {
+  pointer-events: none;
+  opacity: .2;
+}
+
+.splashTexts {
+  rotate: 10deg;
+  font-size: small;
+  font-weight: 500;
+  border-radius: 100%;
+  padding: 7px;
+}
+
 input {
   outline: none;
   background: none;
