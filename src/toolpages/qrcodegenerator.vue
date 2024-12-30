@@ -68,7 +68,7 @@ onMounted(() => {
     <div class="space-y-4">
       <div class="flex flex-col space-y-2">
         <p :class="`theme-${websiteTheme} text-primaryText font-semibold`">Enter link to generate QR code for:</p>
-        <input class="w-96"
+        <input class="w-80"
           :class="`courseInput border-[1px] border-tertiary theme-${websiteTheme} text-primaryText placeholder-tertiaryText`"
           v-model="linkString" placeholder="Enter Link">
         <button @click="generateQRCode(linkString)"

@@ -135,17 +135,17 @@ async function createAccount({ username, email, password }) {
  padding: 8px;
  padding-left: 8px;
  border-radius: 0.375rem;
- border: 2px solid rgb(102, 102, 102);
+ border: 1px solid rgb(102, 102, 102);
  width: 100%;
  transition: border 0.2s ease;
 }
 
 .registerInput:hover {
-  border: 2px solid rgb(221, 16, 50);
+  border: 1px solid rgb(221, 16, 50);
 }
 
 .registerInput:focus {
-  border: 2px solid rgb(182, 2, 32);
+  border: 1px solid rgb(182, 2, 32);
 }
 
 input {
