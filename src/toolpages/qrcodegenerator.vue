@@ -17,15 +17,79 @@ let howToReadMore = ref(false);
 
 let linkString = ref("");
 let qrSize = 37;
+let errCorrectionLevel = 32; // 15% error correction
+let modeIndicator = 0b0100; // byte mode
+let maxDataSymbols = 223;
+
+let symbolSize = 8;
+let genPoly = [1];
+let paritySymbols = [];
+
+let gfLogarithmTable = new Array(512)
+let gfExponentialTable = new Array(256)
+
+// ^= checks if specified property exists in an object
+// <<= left shift, multiplies by 2
+
+// Fill Galois Field (GF) exponential & logarithmic tables
+let primPoly = 0x11D
+let x = 1;
+for (let i = 0; i < 255; i++) {
+  gfExponentialTable[i] = x;
+  gfLogarithmTable[x] = i;
+  x <<= 1; // shift left, multiplies by 2
+  if (x & 0x100) {
+    x ^= primPoly
+  }
+}
+for (let i = 225; i < 512; i++) {
+  gfExponentialTable[i] = gfExponentialTable[i-255];
+}
+
+// Implementing polynomial multiplication in GF(256)
+function gfPolyMultiply(_poly1, _poly2) {
+  let result = new Array(_poly1.length + _poly2.length - 1).fill(0);
+  for (let i = 0; i < _poly1.length; i++) {
+    for (let j = 0; j < _poly2.length; j++) {
+      let product = gfExponentialTable[gfLogarithmTable[_poly1[i]] + gfLogarithmTable[_poly2[j]]]; // multiplying coefficients
+      result[i + j] ^= product;
+    }
+  }
+  return result;
+}
+
+// Implementing exponentiation in GF(256)
+function gfExp(_power) { 
+  return gfExpTable[_power % 255];
+}
+
 function generateQRCode(_linkString) {
   if (!_linkString) { console.log("No link provided"); return; }
-  // Convert string to binary, create qrMatrix
+
+  // Converting link/string to binary array
   const charArray = _linkString.split('')
   const binaryArray = charArray.map(char => char.charCodeAt(0).toString(2).padStart(8, '0'))
   const binaryData = binaryArray.join('');
   const qrMatrix = Array.from({ length: qrSize }, () => Array(qrSize).fill(null));
  
-  console.log(binaryData)
+  // Adding metadata to binary array (prepending char count and qr mode)
+  const charCount = _linkString.length.toString(2).padStart(8, '0')
+  const encodedData = modeIndicator + charCount + binaryData
+
+  // Error correction
+  let symbolsData = [];
+  for (let i = 0; i < encodedData.length; i++) {  // creating list of numbers (0-255)
+    symbolsData.push(parseInt(encodedData.slice(i, i+symbolSize), 2));
+  }
+  
+  for (let i = 0; i < errCorrectionLevel; i++) {  // creating generator polynomial G(x)
+    // greating G(x) using Galois Field, where G(x) = (x-a^i)(x-a^i)...
+    let nextTerm = [1, gfExp(i)]; // (x-α^i)
+    genPoly = gfPolyMultiply(genPoly, nextTerm)
+  }
+  
+
+  
   console.log("QR Code Generated")
 }
 
@@ -54,7 +118,7 @@ onMounted(() => {
         :class="`theme-${websiteTheme} text-secondaryText font-semibold text-sm bg-secondary px-1`">
         <span v-if="howToReadMore === false">Open</span><span v-if="howToReadMore">Close</span>
         Instructions & Info</button>
-      <div v-if="howToReadMore">
+      <div v-if="howToReadMore" :class="`theme-${websiteTheme} text-secondaryText`">
         <p><span class="semibold">a) </span>Put your link in the input field, then click "Generate QR Code". You will be
           given a QR code of the link you used.<br></p>
         <p><span class="semibold">b) </span>This page doesn't require sign-in and it doesn't save your QR code. Ensure
