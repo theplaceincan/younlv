@@ -37,7 +37,7 @@ let gradePoints = [
 
 // let inputSemesterSeason = ref("");
 // let inputSemesterYear = ref();
-let SemesterSeasonOptions = ["Season", "Spring", "Summer", "Fall"]
+let SemesterSeasonOptions = ["Spring", "Summer", "Fall"]
 let inputSemester = ref("");
 let inputCourseName = ref("");
 let inputCourseGrade = ref("");
