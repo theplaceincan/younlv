@@ -35,12 +35,18 @@ let gradePoints = [
   { "letterGrade": "U", "point": 0.0 },
 ]
 
-let inputSemesterSeason = ref("");
-let inputSemesterYear = ref();
-let SemesterSeasonOptions = ["Season", "Spring", "Summer", "Fall"]
+// let inputSemesterSeason = ref("");
+// let inputSemesterYear = ref();
+// let SemesterSeasonOptions = ["Season", "Spring", "Summer", "Fall"]
+let inputSemester = ref("");
 let inputCourseName = ref("");
 let inputCourseGrade = ref("");
 let inputCourseunits = ref("");
+let SemesterYearOptions = [];
+for (let year = 1980; year <= 2030; year++) {
+  SemesterYearOptions.push(year.toString());
+}
+console.log(SemesterYearOptions);
 
 let coursesJSONFile = ref();
 let coursesJSONURL = ref();
@@ -228,10 +234,10 @@ onMounted(() => {
       <p :class="`theme-${websiteTheme} text-primaryText`">GPA: <span class="font-bold">{{ gpa.toFixed(3) }}</span> </p>
       <p :class="`theme-${websiteTheme} text-primaryText`">Units Taken: <span class="font-bold">{{
         totalUnitsTaken.toFixed(3)
-          }}</span> </p>
+      }}</span> </p>
       <p :class="`theme-${websiteTheme} text-primaryText`">Grade Points: <span class="font-bold">{{
         totalGradePoints.toFixed(3)
-          }}</span> </p>
+      }}</span> </p>
       <div class="flex flex-col mt-2 items-start space-y-1 justify-center">
         <button @click="calculateGPAInfo()"
           class="rounded-sm w-[230px] bg-blue-600 hover:bg-blue-700 active:bg-blue-800 transition ease-in-out text-white font-semibold">Calculate</button>
@@ -280,16 +286,21 @@ onMounted(() => {
     </div>
     <div class="border-t-[1px] my-4 border-tertiary"></div>
     <div>
-      <p v-if="errorMsg" class="font-bold text-red-500 p-2 border border-red-500">Error: invalid input. Check if Semester Year or Course Units are numbers.</p>
+      <p v-if="errorMsg" class="font-bold text-red-500 p-2 border border-red-500">Error: invalid input. Check if
+        Semester Year or Course Units are numbers.</p>
       <div v-for="(semester, semesterIndex) in coursesJSON.semesters"
         class="flex my-2 flex-col border border-tertiary p-2 rounded-sm shadow-md">
-        <div :class="`theme-${websiteTheme} text-secondaryText font-semibold`" class="flex flex-col">
+        <div :class="`theme-${websiteTheme} text-secondaryText`" class="flex flex-col">
+          <label class="font-semibold">Semester Season</label>
           <input
-            :class="`hover:bg-secondary transition ease-in-out theme-${websiteTheme} text-primaryText placeholder-tertiaryText`"
+            :class="`transition ease-in-out theme-${websiteTheme} text-primaryText placeholder-tertiaryText courseInput max-w-[400px] border-[1px] border-tertiary`"
             v-model="semester.season" placeholder="Enter semester season">
-          <input type="number"
-            :class="`hover:bg-secondary transition ease-in-out theme-${websiteTheme} text-primaryText placeholder-tertiaryText`"
+          <label class="font-semibold">Semester Year</label>
+          <select
+            :class="`transition ease-in-out theme-${websiteTheme} text-primaryText placeholder-tertiaryText courseInput max-w-[400px] border-[1px] border-tertiary`"
             v-model="semester.year" placeholder="Enter semester year">
+            <option v-for="year in SemesterYearOptions">{{ year }}</option>
+          </select>
         </div>
         <div class="border-t-[1px] rounded-sm my-2 border-tertiary"></div>
         <div class="flex flex-wrap">
@@ -334,10 +345,10 @@ onMounted(() => {
       </div>
     </div>
     <div class="border-t-[1px] my-4 border-tertiary"></div>
-      <button @click="clearSchedule()"
-        class="rounded-sm w-[100px] bg-red-600 hover:bg-red-700 active:bg-red-800 transition ease-in-out text-white font-semibold">
-        Clear all
-      </button>
+    <button @click="clearSchedule()"
+      class="rounded-sm w-[100px] bg-red-600 hover:bg-red-700 active:bg-red-800 transition ease-in-out text-white font-semibold">
+      Clear all
+    </button>
   </div>
 </template>
 
