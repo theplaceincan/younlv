@@ -11,6 +11,7 @@ const router = useRouter();
 const isAuthenticated = ref(pb.authStore.model !== null);
 
 let howToReadMore = ref(false)
+let errorMsg = ref(false);
 
 let totalGradePoints = ref(0);
 let totalUnitsTaken = ref(0);
@@ -119,17 +120,24 @@ function calculateGPAInfo() {
   gpa.value = 0;
   totalGradePoints.value = 0;
   totalUnitsTaken.value = 0;
-  for (const semester of coursesJSON.value.semesters) {
-    for (const course of semester.courses) {
-      foundGradePoint = gradePoints.find((e) => course.grade == e.letterGrade)?.point || 0
-      console.log(`Course: ${course.name}, Grade: ${course.grade}, Grade Point: ${foundGradePoint}`);
-      totalGradePoints.value += foundGradePoint * course.units;
-      totalUnitsTaken.value += course.units
-    }
-  }
-  gpa.value = (totalGradePoints.value / totalUnitsTaken.value)
+  errorMsg.value = false;
+  try {
+    for (const semester of coursesJSON.value.semesters) {
+      for (const course of semester.courses) {
+        if (course.units === "" || isNaN(course.units)) throw new Error(`Invalid units for course: ${course.name}`);
 
-  console.log("GPA Info Calculated")
+        foundGradePoint = gradePoints.find((e) => course.grade == e.letterGrade)?.point || 0
+        console.log(`Course: ${course.name}, Grade: ${course.grade}, Grade Point: ${foundGradePoint}`);
+        totalGradePoints.value += foundGradePoint * course.units;
+        totalUnitsTaken.value += course.units
+      }
+    }
+    gpa.value = (totalGradePoints.value / totalUnitsTaken.value)
+    console.log("GPA Info Calculated")
+  } catch (error) {
+    console.log(`ERROR: ${error}`)
+    errorMsg.value = true;
+  }
 }
 
 let downloadWasSuccessfull = ref(null)
@@ -272,6 +280,7 @@ onMounted(() => {
     </div>
     <div class="border-t-[1px] my-4 border-tertiary"></div>
     <div>
+      <p v-if="errorMsg" class="font-bold text-red-500 p-2 border border-red-500">Error: invalid input. Check if Semester Year or Course Units are numbers.</p>
       <div v-for="(semester, semesterIndex) in coursesJSON.semesters"
         class="flex my-2 flex-col border border-tertiary p-2 rounded-sm shadow-md">
         <div :class="`theme-${websiteTheme} text-secondaryText font-semibold`" class="flex flex-col">
