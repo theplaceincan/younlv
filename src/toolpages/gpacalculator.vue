@@ -64,6 +64,8 @@ let coursesJSON = ref(
   }
 );
 
+let JSONFileOpenStatus = ref(null) // 1: good, 0: bad
+
 let aa = 1
 let ee = ref("")
 
@@ -122,6 +124,7 @@ function clearSchedule() {
 }
 
 function calculateGPAInfo() {
+  JSONFileOpenStatus.value = false;
   let foundGradePoint = 0;
   gpa.value = 0;
   totalGradePoints.value = 0;
@@ -168,7 +171,6 @@ function downloadCoursesJSON() {
   removeStatus(downloadWasSuccessfull);
 }
 
-let JSONFileOpenStatus = ref(null) // 1: good, 0: bad
 function loadCoursesJSONfile(event) {
   coursesJSONFile.value = Array.from(event.target.files)[0];
   coursesJSONURL.value = URL.createObjectURL(coursesJSONFile.value);
