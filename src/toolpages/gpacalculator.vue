@@ -295,13 +295,13 @@ onMounted(() => {
         <div :class="`theme-${websiteTheme} text-secondaryText`" class="flex flex-col">
           <label class="font-semibold">Semester Season</label>
             <select
-            :class="`transition ease-in-out theme-${websiteTheme} text-primaryText placeholder-tertiaryText courseInput max-w-[400px] border-[1px] border-tertiary`"
+            :class="`transition ease-in-out theme-${websiteTheme} text-primaryText placeholder-tertiaryText courseInput max-w-[300px] border-[1px] border-tertiary`"
             v-model="semester.season" placeholder="Enter semester season">
             <option v-for="season in SemesterSeasonOptions">{{ season }}</option>
           </select>
           <label class="font-semibold">Semester Year</label>
           <select
-            :class="`transition ease-in-out theme-${websiteTheme} text-primaryText placeholder-tertiaryText courseInput max-w-[400px] border-[1px] border-tertiary`"
+            :class="`transition ease-in-out theme-${websiteTheme} text-primaryText placeholder-tertiaryText courseInput max-w-[300px] border-[1px] border-tertiary`"
             v-model="semester.year" placeholder="Enter semester year">
             <option v-for="year in SemesterYearOptions">{{ year }}</option>
           </select>
