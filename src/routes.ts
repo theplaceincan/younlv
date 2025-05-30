@@ -4,6 +4,7 @@ import Menu from "./views/Menu.vue";
 import gpaCalculator from "./toolpages/gpacalculator.vue";
 import qrCodeGenerator from "./toolpages/qrcodegenerator.vue";
 import coursePrepResources from "./toolpages/courseprepresources.vue";
+import Calc2practice from "./toolpages/calc2practice.vue";
 
 
 const routes = [
@@ -14,7 +15,8 @@ const routes = [
     // Tool pages
     { path: '/gpa-calculator', component: gpaCalculator},
     { path: '/qr-code-generator', component: qrCodeGenerator},
-    { path: '/course-prep-resources', component: coursePrepResources}
+    { path: '/course-prep-resources', component: coursePrepResources},
+    { path: '/calc2practice', component: Calc2practice},
 ];
 
 export default routes;

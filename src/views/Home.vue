@@ -17,6 +17,7 @@ const isAuthenticated = computed(() => {
 let splashTextTypes = ["Yay", "In-Progress", "Planned"]
 
 const homeButtons = ref([
+  { href: "/calc2practice", planned: false, title: "Calculu 2 Steward Practice", splashText: "New!", splashType: splashTextTypes[0] },
   { href: "/gpa-calculator", planned: false, title: "GPA Calculator", splashText: "New!", splashType: splashTextTypes[0] },
   { href: "/qr-code-generator", planned: false, title: "Free QR-code Generator", splashText: "In Progress", splashType: splashTextTypes[1] },
   { href: "/course-prep-resources", planned: true, title: "Course Prep Resources", splashText: "Planned", splashType: splashTextTypes[2] },
