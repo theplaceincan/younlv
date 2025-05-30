@@ -1,3 +1,8 @@
+<!-- QR Code Generator
+----------------------------------------------
+ This is meant to be a completely free QR Code Generator for students
+ and organizations.
+-->
 
 <script setup>
 import { ref, computed, onMounted, watch } from "vue";

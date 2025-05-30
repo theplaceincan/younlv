@@ -1,8 +1,14 @@
+<!-- Calc 2 Practice
+----------------------------------------------
+ This is a place to practice MATH 182 Integral Calculus (Calc 2) problems
+ in preparation for final exams and overall study.
+-->
+
 <script setup>
 import { ref, computed, onMounted, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import pb from "../composables/usePocketbase";
-import { websiteTheme } from "../globalvariables";
+import pb from "../../../composables/usePocketbase";
+import { websiteTheme } from "../../../globalvariables";
 
 const isAuthenticated = computed(() => {
   return pb.authStore.model !== null;

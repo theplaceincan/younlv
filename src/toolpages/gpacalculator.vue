@@ -1,3 +1,8 @@
+<!-- UNLV GPA Calculator
+----------------------------------------------
+ This page is a GPA calculator that students can use.
+-->
+
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
@@ -181,13 +186,6 @@ function loadCoursesJSONfile(event) {
       console.log("JSON courses file loaded.");
       coursesJSON.value = jsonContent;
 
-      // console.log(courses.value.semesters);
-      // console.log(courses.value.semesters[1].year);
-      // console.log(courses.value.semesters[1].season);
-      // console.log(courses.value.semesters[1].courses[1].name);
-      // console.log(courses.value.semesters[1].courses[1].units);
-      // console.log(courses.value.semesters[1].courses[1].grade);
-
       JSONFileOpenStatus.value = 1;
       // removeStatus(JSONFileOpenStatus);
       console.log(JSONFileOpenStatus)
@@ -208,13 +206,6 @@ function removeStatus(_var) {
 let doubleCheck_deleteCourse = ref(false);
 let doubleCheck_deleteSemester = ref(false);
 let doubleCheck_clearSchedule = ref(false);
-// function resetDoubleCheck(_var) {
-//   console.log(_var)
-//   setTimeout(() => {
-//     _var.value = false;
-//     console.log(_var)
-//   }, 3000);
-// }
 
 onMounted(() => {
   // Updates isAuthenticated automatically
