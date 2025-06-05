@@ -4,7 +4,7 @@ import Menu from "./views/Menu.vue";
 import gpaCalculator from "./toolpages/gpacalculator.vue";
 import qrCodeGenerator from "./toolpages/qrcodegenerator.vue";
 import coursePrepResources from "./toolpages/courseprepresources.vue";
-import Calc2practice from "./toolpages/calc2practice.vue";
+import Calc2practice from "./toolpages/courses/Math 182 Calculus II/calc2practice.vue";
 
 
 const routes = [
