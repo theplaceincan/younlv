@@ -24,7 +24,11 @@ let linkString = ref()
 // *******************************
 // QR-Code Implementation
 
-
+let generationComplete = ref(false);
+function generateQRCode(linkString) {
+  console.log(linkString);
+  generationComplete.value = true;
+}
 
 
 // QR-Code Implementation
@@ -40,42 +44,40 @@ onMounted(() => {
 
 </script>
 
-<!-- :class="`theme-${websiteTheme} text-primaryText`" -->
 <template>
   <div class="min-h-[100vh] p-4">
-    <p :class="`theme-${websiteTheme} text-primaryText font-bold text-lg`">QR Code Generator</p>
+    <p :class="`theme-${websiteTheme} text-textHeading font-bold text-2xl`">QR Code Generator</p>
     <p class="bg-yellow-300 text-black font-bold">UNDER DEVELOPMENT</p>
-    <div class="border-t-[1px] my-4 border-tertiary"></div>
+    <!-- <div class="border-t-[1px] my-4 border-tertiary"></div> -->
+    <div class="my-4"></div>
     <div>
-      <p :class="`theme-${websiteTheme} text-primaryText font-semibold`">Instructions & Info</p>
+      <p :class="`theme-${websiteTheme} text-textHeading font-semibold`">Instructions & Info</p>
       <button @click="howToReadMore = !howToReadMore"
-        :class="`theme-${websiteTheme} text-secondaryText font-semibold text-sm bg-secondary px-1`">
+        :class="`theme-${websiteTheme} cursor-pointer text-textBody border border-borderDefault font-semibold text-sm bg-backgroundSubtle hover:bg-backgroundSubtlest px-1`">
         <span v-if="howToReadMore === false">Open</span><span v-if="howToReadMore">Close</span>
         Instructions & Info</button>
-      <div v-if="howToReadMore" :class="`theme-${websiteTheme} text-secondaryText`">
-        <p><span class="semibold">a) </span>Put your link in the input field, then click "Generate QR Code". You will be
+      <div v-if="howToReadMore" :class="`theme-${websiteTheme} text-textBody`">
+        <p><span class="text-textHeading">a) </span>Put your link in the input field, then click "Generate QR Code". You will be
           given a QR code of the link you used.<br></p>
-        <p><span class="semibold">b) </span>This page doesn't require sign-in and it doesn't save your QR code. Ensure
+        <p><span class="text-textHeading">b) </span>This page doesn't require sign-in and it doesn't save your QR code. Ensure
           you save your QR code before leaving.<br></p>
-        <p><span class="semibold">c) </span>Send a message at <a href="https://forms.gle/TVk6J6SoD43d29229"
+        <p><span class="text-textHeading">c) </span>Send a message at <a href="https://forms.gle/TVk6J6SoD43d29229"
             target="_blank" class="underline">this
             Google form</a> if you have any other questions!<br></p>
       </div>
     </div>
-    <div class="border-t-[1px] my-4 border-tertiary"></div>
+    <div class="border-t-[1px] my-4 border-borderDefault"></div>
     <div class="space-y-4">
       <div class="flex flex-col space-y-2">
-        <p :class="`theme-${websiteTheme} text-primaryText font-semibold`">Enter link to generate QR code for:</p>
-        <input class="w-80"
-          :class="`courseInput border-[1px] border-tertiary theme-${websiteTheme} text-primaryText placeholder-tertiaryText`"
-          v-model="linkString" placeholder="Enter Link">
+        <p :class="`theme-${websiteTheme} text-textHeading font-semibold`">Enter link to generate QR code for:</p>
+        <input class="w-80" v-model="linkString" placeholder="Enter Link">
         <button @click="generateQRCode(linkString)"
-          class="rounded-sm w-[230px] bg-blue-600 hover:bg-blue-700 active:bg-blue-800 transition ease-in-out text-white font-semibold">
+          class="mainButton1Blue">
           Generate QR Code
         </button>
       </div>
-      <div>
-        <p :class="`theme-${websiteTheme} text-primaryText font-semibold`">Generated QR Code:</p>
+      <div v-if="generationComplete">
+        <p :class="`theme-${websiteTheme} text-textHeading font-semibold`">Generated QR Code:</p>
         <div class="qr-code-container">
 
         </div>
@@ -85,6 +87,11 @@ onMounted(() => {
 </template>
 
 <style scoped>
+button {
+  width: 100%;
+  max-width: 230px;
+}
+
 input {
   outline: none;
   background: none;

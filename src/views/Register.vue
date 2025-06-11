@@ -90,12 +90,12 @@ async function createAccount({ username, email, password }) {
     <!-- Create account -->
     <div v-if="viewN === 0" class="space-y-2 max-w-[300px]">
       <p :class="`theme-${websiteTheme} text-center text-primaryText font-bold text-2xl my-6`">Create an account</p>
-      <input v-model="crAcc_username" type="text" class="registerInput" placeholder="Username" :class="`theme-${websiteTheme} text-primaryText placeholder-tertiaryText`">
-      <input v-model="crAcc_email" type="email" class="registerInput" placeholder="Email (example@gmail.com)" :class="`theme-${websiteTheme} text-primaryText placeholder-tertiaryText`">
-      <input v-model="crAcc_password" type="password" class="registerInput" placeholder="Password (follow listed guide)" :class="`theme-${websiteTheme} text-primaryText placeholder-tertiaryText`">
-      <input v-model="crAcc_confirmPassword" type="password" class="registerInput" placeholder="Confirm Password" :class="`theme-${websiteTheme} text-primaryText placeholder-tertiaryText`">
+      <input v-model="crAcc_username" type="text" class="" placeholder="Username" :class="`theme-${websiteTheme} text-primaryText placeholder-tertiaryText`">
+      <input v-model="crAcc_email" type="email" class="" placeholder="Email (example@gmail.com)" :class="`theme-${websiteTheme} text-primaryText placeholder-tertiaryText`">
+      <input v-model="crAcc_password" type="password" class="" placeholder="Password (follow listed guide)" :class="`theme-${websiteTheme} text-primaryText placeholder-tertiaryText`">
+      <input v-model="crAcc_confirmPassword" type="password" class="" placeholder="Confirm Password" :class="`theme-${websiteTheme} text-primaryText placeholder-tertiaryText`">
       <div class="flex flex-col items-center justify-center">
-        <button @click.prevent="createAccForm(crAcc_username, crAcc_email, crAcc_password, crAcc_confirmPassword)" class="baseSubmitButtonCSS my-5 bg-unlvRed hover:bg-unlvDarkRed active:bg-unlvDarkerRed transition ease-in-out">Create Account</button>
+        <button @click.prevent="createAccForm(crAcc_username, crAcc_email, crAcc_password, crAcc_confirmPassword)" class="mainButton1 w-full my-5">Create Account</button>
         <div v-if="isLoading">
           <img src="/src/assets/gifs/loading.gif">
         </div>
@@ -104,10 +104,10 @@ async function createAccount({ username, email, password }) {
     <!-- Sign in to existing account -->
     <div v-if="viewN === 1" class="space-y-2 max-w-[300px]">
       <p :class="`theme-${websiteTheme} text-center text-primaryText font-bold text-2xl my-6`">Sign In</p>
-      <input v-model="signIn_email" type="email" class="registerInput" placeholder="Email (example@gmail.com)" :class="`theme-${websiteTheme} text-primaryText placeholder-tertiaryText`">
-      <input v-model="signIn_password" type="password" class="registerInput" placeholder="Password" :class="`theme-${websiteTheme} text-primaryText placeholder-tertiaryText`">
+      <input v-model="signIn_email" type="email" class="" placeholder="Email (example@gmail.com)" :class="`theme-${websiteTheme} text-primaryText placeholder-tertiaryText`">
+      <input v-model="signIn_password" type="password" class="" placeholder="Password" :class="`theme-${websiteTheme} text-primaryText placeholder-tertiaryText`">
       <div class="flex flex-col items-center justify-center">
-        <button @click.prevent="signInForm(signIn_email, signIn_password)" class="baseSubmitButtonCSS my-5 bg-unlvRed hover:bg-unlvDarkRed active:bg-unlvDarkerRed transition ease-in-out">Sign In</button>
+        <button @click.prevent="signInForm(signIn_email, signIn_password)" class="mainButton1 w-full my-5">Sign In</button>
         <div v-if="isLoading">
           <img src="/src/assets/gifs/loading.gif">
         </div>
@@ -122,38 +122,4 @@ async function createAccount({ username, email, password }) {
 </template>
 
 <style scoped>
-
-.baseSubmitButtonCSS {
-  padding: 1rem;
-  border-radius: 0.375rem;
-  font-weight: 600;
-  color: white;
-  width: 100%;
-}
-
-.registerInput {
- padding: 8px;
- padding-left: 8px;
- border-radius: 0.375rem;
- border: 1px solid rgb(102, 102, 102);
- width: 100%;
- transition: border 0.2s ease;
-}
-
-.registerInput:hover {
-  border: 1px solid rgb(221, 16, 50);
-}
-
-.registerInput:focus {
-  border: 1px solid rgb(182, 2, 32);
-}
-
-input {
-  outline: none;
-  background: none;
-}
-
-textarea {
-  outline: none;
-}
 </style>

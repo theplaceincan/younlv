@@ -215,27 +215,27 @@ onMounted(() => {
 });
 </script>
 
-<!-- :class="`theme-${websiteTheme} text-primaryText`" -->
+<!-- :class="`theme-${websiteTheme} text-textHeading`" -->
 <template>
   <div class="min-h-[100vh] p-4">
-    <p :class="`theme-${websiteTheme} text-primaryText font-bold text-lg`">GPA Calculator</p>
-    <p class="bg-yellow-300 text-black font-bold px-2">New! Report bugs <a target="_blank"
-        href="https://forms.gle/TVk6J6SoD43d29229" class="underline">here</a></p>
-    <div class="border-t-[1px] my-4 border-tertiary"></div>
-    <p :class="`theme-${websiteTheme} text-primaryText`" class="font-semibold underline">Results</p>
+    <p :class="`theme-${websiteTheme} text-textHeading font-bold text-2xl`">GPA Calculator</p>
+    <!-- <p class="bg-yellow-300 text-black font-bold px-2">New! Report bugs <a target="_blank"
+        href="https://forms.gle/TVk6J6SoD43d29229" class="underline">here</a></p> -->
+    <!-- <div class="border-t-[1px] my-4 border-borderDefault"></div> -->
+     <div class="my-4"></div>
     <div>
-      <p :class="`theme-${websiteTheme} text-primaryText`">GPA: <span class="font-bold">{{ gpa.toFixed(3) }}</span> </p>
-      <p :class="`theme-${websiteTheme} text-primaryText`">Units Taken: <span class="font-bold">{{
+      <p :class="`theme-${websiteTheme} text-textHeading`">GPA: <span class="font-bold">{{ gpa.toFixed(3) }}</span> </p>
+      <p :class="`theme-${websiteTheme} text-textHeading`">Units Taken: <span class="font-bold">{{
         totalUnitsTaken.toFixed(3)
       }}</span> </p>
-      <p :class="`theme-${websiteTheme} text-primaryText`">Grade Points: <span class="font-bold">{{
+      <p :class="`theme-${websiteTheme} text-textHeading`">Grade Points: <span class="font-bold">{{
         totalGradePoints.toFixed(3)
       }}</span> </p>
       <div class="flex flex-col mt-2 items-start space-y-1 justify-center">
         <button @click="calculateGPAInfo()"
-          class="rounded-sm w-[230px] bg-blue-600 hover:bg-blue-700 active:bg-blue-800 transition ease-in-out text-white font-semibold">Calculate</button>
+          class="mainButton1 w-[230px] ">Calculate</button>
         <button @click="downloadCoursesJSON()"
-          class="rounded-sm w-[230px] bg-lime-600 hover:bg-lime-700 active:bg-lime-800 transition ease-in-out text-white font-semibold">Download
+          class="mainButton1Blue rounded-sm w-[230px]">Download
           JSON file (.json)</button>
         <div
           :class="{ 'bg-green-500': downloadWasSuccessfull === true, 'bg-red-500': downloadWasSuccessfull === false }">
@@ -245,22 +245,22 @@ onMounted(() => {
             downloaded.</p>
         </div>
         <div class="py-2">
-          <p :class="`theme-${websiteTheme} text-primaryText font-semibold`">Load Courses JSON file (.json)</p>
+          <p :class="`theme-${websiteTheme} text-textHeading font-semibold`">Load Courses JSON file (.json)</p>
           <div class="p-2"
             :class="{ 'bg-green-500/30': JSONFileOpenStatus === 1, 'bg-red-500/80': JSONFileOpenStatus === 0 }">
             <input @change="loadCoursesJSONfile" placeholder="Load JSON file"
-              :class="`theme-${websiteTheme} text-primaryText placeholder-tertiaryText`" type="file">
+              :class="`theme-${websiteTheme} text-textHeading placeholder-textSubtle`" type="file">
             <p v-if="JSONFileOpenStatus === 0" class="w-fit my-1 px-2 p-2 font-bold text-white">File failed to load. Try
               again.</p>
           </div>
         </div>
         <div class="">
-          <p :class="`theme-${websiteTheme} text-primaryText font-semibold`">How this works</p>
-          <button @click="howToReadMore = !howToReadMore"
-            :class="`theme-${websiteTheme} text-secondaryText font-semibold text-sm bg-secondary px-1`">
+          <p :class="`theme-${websiteTheme} text-textHeading font-semibold`">How this works</p>
+          <a @click="howToReadMore = !howToReadMore"
+            :class="`theme-${websiteTheme} cursor-pointer text-textBody border border-borderDefault font-semibold text-sm bg-backgroundSubtle hover:bg-backgroundSubtlest px-1`">
             <span v-if="howToReadMore === false">Open</span><span v-if="howToReadMore">Close</span>
-            Instructions</button>
-          <p v-if="howToReadMore" :class="`theme-${websiteTheme} text-secondaryText`">
+            Instructions</a>
+          <p v-if="howToReadMore" :class="`theme-${websiteTheme} text-textBody`">
             <span class="font-semibold">a)</span> List your courses and semesters below, then click "Calculate" to
             compute your GPA info. <br>
             <span class="font-semibold">b)</span> Download your schedule as a
@@ -277,47 +277,47 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <div class="border-t-[1px] my-4 border-tertiary"></div>
+    <div class="border-t-[1px] my-4 border-borderDefault"></div>
     <div>
       <p v-if="errorMsg" class="font-bold text-red-500 p-2 border border-red-500">Error: invalid input. Check if
         Semester Year or Course Units are numbers.</p>
       <div v-for="(semester, semesterIndex) in coursesJSON.semesters"
-        class="flex my-2 flex-col border border-tertiary p-2 rounded-sm shadow-md">
-        <div :class="`theme-${websiteTheme} text-secondaryText`" class="flex flex-col">
+        class="flex my-2 flex-col border border-borderDefault p-2 rounded-sm shadow-md">
+        <div :class="`theme-${websiteTheme} text-textBody`" class="flex flex-col">
           <label class="font-semibold">Semester Season</label>
             <select
-            :class="`transition ease-in-out theme-${websiteTheme} text-primaryText placeholder-tertiaryText courseInput max-w-[300px] border-[1px] border-tertiary`"
+            :class="`transition ease-in-out theme-${websiteTheme} text-textHeading placeholder-textSubtle courseInput max-w-[300px] border-[1px] border-borderDefault`"
             v-model="semester.season" placeholder="Enter semester season">
             <option v-for="season in SemesterSeasonOptions">{{ season }}</option>
           </select>
           <label class="font-semibold">Semester Year</label>
           <select
-            :class="`transition ease-in-out theme-${websiteTheme} text-primaryText placeholder-tertiaryText courseInput max-w-[300px] border-[1px] border-tertiary`"
+            :class="`transition ease-in-out theme-${websiteTheme} text-textHeading placeholder-textSubtle courseInput max-w-[300px] border-[1px] border-borderDefault`"
             v-model="semester.year" placeholder="Enter semester year">
             <option v-for="year in SemesterYearOptions">{{ year }}</option>
           </select>
         </div>
-        <div class="border-t-[1px] rounded-sm my-2 border-tertiary"></div>
+        <div class="border-t-[1px] rounded-sm my-2 border-borderDefault"></div>
         <div class="flex flex-wrap">
           <div v-for="(course, courseIndex) in coursesJSON.semesters[semesterIndex].courses"
-            :class="`shadow-md theme-${websiteTheme} border-2 border-tertiary`"
+            :class="`shadow-md theme-${websiteTheme} border-2 border-borderDefault`"
             class="flex m-1 flex-col w-fit p-1 rounded-sm">
             <div class="flex flex-col space-y-1">
               <input
-                :class="`courseInput border-[1px] border-tertiary theme-${websiteTheme} text-primaryText placeholder-tertiaryText`"
+                :class="`courseInput border-[1px] border-borderDefault theme-${websiteTheme} text-textHeading placeholder-textSubtle`"
                 v-model="course.name" placeholder="Course name">
               <select
-                :class="`courseInput border-[1px] border-tertiary theme-${websiteTheme} text-primaryText placeholder-tertiaryText`"
+                :class="`courseInput border-[1px] border-borderDefault theme-${websiteTheme} text-textHeading placeholder-textSubtle`"
                 v-model="course.grade" placeholder="Course grade">
                 <option v-for="grade in gradePoints">{{ grade.letterGrade }}</option>
               </select>
               <input type="number"
-                :class="`courseInput border-[1px] border-tertiary theme-${websiteTheme} text-primaryText placeholder-tertiaryText`"
+                :class="`courseInput border-[1px] border-borderDefault theme-${websiteTheme} text-textHeading placeholder-textSubtle`"
                 v-model="course.units" placeholder="Course units">
             </div>
             <div class="flex flex-col space-y-1 mt-4 items-center justify-center">
               <button @click="deleteCourse(semester, courseIndex)"
-                class="rounded-sm w-full text-red-500 hover:bg-red-600 active:bg-red-700 transition ease-in-out hover:text-white font-semibold">
+                class="mainButton1OutlinedCondensed">
                 Delete course
               </button>
             </div>
@@ -325,59 +325,37 @@ onMounted(() => {
         </div>
         <div class="flex flex-col mt-4 space-y-1 items-start justify-center">
           <button @click="createCourse(semester)"
-            class="rounded-sm px-5 py-1 w-[220px] bg-green-600 hover:bg-green-700 active:bg-green-800 transition ease-in-out text-white font-semibold">
+            class="mainButton1Green">
             Create course</button>
           <button @click="deleteSemester(semesterIndex)"
-            class="rounded-sm px-5 w-[220px] bg-red-600 hover:bg-red-700 active:bg-red-800 transition ease-in-out text-white font-semibold">
+            class="mainButton1">
             Delete semester
           </button>
         </div>
       </div>
       <div class="flex flex-col mt-4 space-y-1 items-start justify-center">
         <button @click="createSemester()"
-          class="rounded-sm px-5 bg-teal-600 hover:bg-teal-700 active:bg-teal-800 transition ease-in-out text-white font-semibold">
+          class="mainButton1Green">
           Create semester</button>
       </div>
     </div>
-    <div class="border-t-[1px] my-4 border-tertiary"></div>
+    <div class="border-t-[1px] my-4 border-borderDefault"></div>
     <button @click="clearSchedule()"
-      class="rounded-sm w-[100px] bg-red-600 hover:bg-red-700 active:bg-red-800 transition ease-in-out text-white font-semibold">
+      class="mainButton1">
       Clear all
     </button>
   </div>
 </template>
 
 <style scoped>
+
+button {
+  width: 100%;
+  max-width: 230px;
+}
+
 .inputError {
   background-color: rgba(255, 0, 0, 0.329);
-}
-
-input {
-  outline: none;
-  background: none;
-}
-
-select {
-  outline: none;
-  background: none;
-}
-
-select {
-  color: var(--color-primaryText);
-  background-color: var(--color-background);
-}
-
-select option {
-  background-color: var(--color-primary);
-  color: var(--color-primaryText);
-}
-
-select option:hover {
-  background-color: var(--color-tertiary);
-}
-
-select option:checked {
-  background-color: var(--color-secondary);
 }
 
 .courseInput {
@@ -386,11 +364,9 @@ select option:checked {
   border-radius: 0.175rem;
   transition: border 0.2s ease;
 }
-
 .courseInput:hover {
   border: 1px solid var(--color-unlvRed);
 }
-
 .courseInput:focus {
   border: 1px solid var(--color-unlvDarkRed);
 }

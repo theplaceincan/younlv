@@ -6,7 +6,7 @@ import { websiteTheme } from './globalvariables';
 </script>
 
 <template>
-    <div :class="`theme-${websiteTheme} bg-bgPrimary`">
+    <div :class="`theme-${websiteTheme} bg-backgroundBase`">
         <Navbar></Navbar>
         <router-view></router-view>
         <Footer></Footer>

@@ -1,11 +1,13 @@
 import Home from "./views/Home.vue";
 import Register from "./views/Register.vue";
 import Menu from "./views/Menu.vue";
+
+// tool pages
 import gpaCalculator from "./toolpages/gpacalculator.vue";
 import qrCodeGenerator from "./toolpages/qrcodegenerator.vue";
-import coursePrepResources from "./toolpages/courseprepresources.vue";
-import Calc2practice from "./toolpages/courses/Math 182 Calculus II/calc2practice.vue";
-
+import classResources from "./toolpages/classresources.vue";
+import textbookFinder from "./toolpages/textbookfinder.vue";
+import coursePracticeBanks from "./toolpages/coursepracticebanks.vue";
 
 const routes = [
     { path: '/', component: Home },
@@ -15,8 +17,9 @@ const routes = [
     // Tool pages
     { path: '/gpa-calculator', component: gpaCalculator},
     { path: '/qr-code-generator', component: qrCodeGenerator},
-    { path: '/course-prep-resources', component: coursePrepResources},
-    { path: '/calc2practice', component: Calc2practice},
+    { path: '/class-resources', component: classResources},
+    { path: '/textbook-finder', component: textbookFinder},
+    { path: '/course-practice-banks', component: coursePracticeBanks},
 ];
 
 export default routes;

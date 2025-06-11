@@ -19,10 +19,10 @@ function logOut() {
 }
 </script>
 
-<!-- :class="`theme-${websiteTheme} text-primaryText`" -->
+<!-- :class="`theme-${websiteTheme} text-text1`" -->
 <template>
     <div class="min-h-[100vh]">
-        <p :class="`theme-${websiteTheme} text-primaryText text-2xl text-center font-semibold`">User Menu</p>
+        <p :class="`theme-${websiteTheme} text-text1 text-2xl text-center font-semibold`">User Menu</p>
         <button @click="logOut()" class="my-2 font-semibold" :class="`theme-${ websiteTheme}
         text-white 
           bg-red-600
